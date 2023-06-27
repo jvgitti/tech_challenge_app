@@ -5,11 +5,16 @@ import matplotlib.pyplot as plt
 
 st.title('Análise de exportação de vinho brasileiro.')
 
-tab0, tab1, tab2, tab3 = st.tabs(["Importadores", "Exportação", "Produção", "Produção x Exportação"])
+tab0, tab1, tab2, tab3 = st.tabs(["Geral", "Países Prioritários", "Países Potenciais", "Produção x Exportação"])
 
+map_paises = {
+    "Alemanha, República Democrática": "Alemanha",
+    "Tcheca República": "República Tcheca"
+}
 
 # Analise dos dados de exportacao
 df_exp_vinho = pd.read_csv('ExpVinho.csv', sep=';')
+df_exp_vinho['País'] = df_exp_vinho['País'].map(lambda x: map_paises.get(x) if x in map_paises else x)
 
 df_exp_vinho = df_exp_vinho.drop('Id', axis=1)
 df_exp_vinho = df_exp_vinho.melt(id_vars=['País'], var_name='ano', value_name='valor')
@@ -125,43 +130,14 @@ with tab0:
     
     Texto...
     """
-
-
     st.dataframe(df_plot_1)
+
     plt.figure()
     sns.set(style="whitegrid")
     sns.barplot(data=df_plot_1.head(10), x='País', y='Valor (US$) (em milhões)')
     plt.title('Exportação de vinho brasileiro 2007-2021')
     plt.ylabel('Valor (US$) (em milhões)')
-    plt.xticks(rotation=90)
-    st.pyplot(plt)
-
-    plt.figure()
-    sns.barplot(data=df_plot_2, x='País', y='valor', hue='tipo')
-    plt.title('Exportação de vinho brasileiro 2007-2021')
-    plt.legend(title='Tipos')
-    plt.ylabel('Valor (em milhões)')
-    st.pyplot(plt)
-
-    plt.figure()
-    sns.barplot(data=df_plot_4, x='País', y='valor_por_litro')
-    plt.title('Média do valor por litro do vinho')
-    plt.ylabel('Valor (US$)')
-    plt.xticks(rotation=45)
-    st.pyplot(plt)
-
-    plt.figure()
-    plt.title('Valor por litro do vinho com o decorrer do tempo')
-    plt.xlabel('Ano')
-    plt.ylabel('Valor (US$)')
-    sns.lineplot(data=df_plot_5, x='ano', y='valor_por_litro', hue='País')
-    st.pyplot(plt)
-
-    plt.figure()
-    sns.lineplot(data=df_plot_6, x='ano', y='valor', hue='País')
-    plt.title('Exportação de vinho brasileiro em decorrer com o tempo')
-    plt.xlabel('Ano')
-    plt.ylabel('Quantidade (L) (em milhões)')
+    plt.xticks(rotation=65)
     st.pyplot(plt)
 
 
@@ -171,6 +147,14 @@ with tab1:
 
     Texto...
     """
+
+    plt.figure()
+    sns.barplot(data=df_plot_2, x='País', y='valor', hue='tipo')
+    plt.title('Exportação de vinho brasileiro 2007-2021')
+    plt.legend(title='Tipo')
+    plt.ylabel('Valor (US$) (em milhões)')
+    plt.xticks(rotation=30)
+    st.pyplot(plt)
 
     plt.figure()
     sns.lineplot(data=df_plot_3[df_plot_3.tipo == 'Quantidade'], x='ano', y='valor', hue='País')
@@ -191,21 +175,43 @@ with tab1:
     plt.xlabel('Ano')
     plt.ylabel('Valor (em milhões)')
     plt.title('Exportação Total com o decorrer do tempo')
+    plt.legend(title='Tipo')
     st.pyplot(plt)
 
 with tab2:
+    # plt.figure()
+    # sns.lineplot(data=df_plot_8[df_plot_8.ano >= 2007], x='ano', y='valor', hue='tipo')
+    # plt.xlabel('Ano')
+    # plt.ylabel('Valor (em milhões)')
+    # plt.title('Produção com o decorrer do tempo')
+    # st.pyplot(plt)
+    #
+    # plt.figure()
+    # sns.lineplot(data=df_plot_9[df_plot_9.ano >= 2007], x='ano', y='valor', hue='Produto')
+    # plt.xlabel('Ano')
+    # plt.ylabel('Valor (em milhões)')
+    # plt.title('Produção de Vinho de Mesa com o decorrer do tempo')
+    # st.pyplot(plt)
+
     plt.figure()
-    sns.lineplot(data=df_plot_8[df_plot_8.ano >= 2007], x='ano', y='valor', hue='tipo')
-    plt.xlabel('Ano')
-    plt.ylabel('Valor (em milhões)')
-    plt.title('Produção com o decorrer do tempo')
+    sns.barplot(data=df_plot_4, x='País', y='valor_por_litro')
+    plt.title('Média do valor por litro do vinho')
+    plt.ylabel('Valor (US$)')
+    plt.xticks(rotation=30)
     st.pyplot(plt)
 
     plt.figure()
-    sns.lineplot(data=df_plot_9[df_plot_9.ano >= 2007], x='ano', y='valor', hue='Produto')
+    plt.title('Valor por litro do vinho com o decorrer do tempo')
     plt.xlabel('Ano')
-    plt.ylabel('Valor (em milhões)')
-    plt.title('Produção de Vinho de Mesa com o decorrer do tempo')
+    plt.ylabel('Valor (US$)')
+    sns.lineplot(data=df_plot_5, x='ano', y='valor_por_litro', hue='País')
+    st.pyplot(plt)
+
+    plt.figure()
+    sns.lineplot(data=df_plot_6, x='ano', y='valor', hue='País')
+    plt.title('Exportação de vinho brasileiro em decorrer com o tempo')
+    plt.xlabel('Ano')
+    plt.ylabel('Quantidade (L) (em milhões)')
     st.pyplot(plt)
 
 with tab3:
