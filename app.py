@@ -163,6 +163,15 @@ with tab0:
     # st.dataframe(df_plot_1, use_container_width=True)
     st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'))
 
+    """
+    De 2007 a 2021, as exportações de vinhos brasileiros tiveram um aumento significativo, embora ainda representem uma 
+    pequena parcela do mercado global. Dentre os países que mais importam o vinho brasileiro no período em questão, 
+    temos em destaque Paraguai com mais de 30 milhões de dólares em vinhos importados - grande parte se deve a sua proximidade geográfica e às 
+    relações comerciais entre os dois países - Rússia e China, importantes parceiros do BRICS também fazem parte desta 
+    lista, porém a Rússia com maior peso sendo a segunda maior importadora com cerca de 25 milhões de dólares, e em 
+    terceiro o Estados Unidos, com aproximadamente 10 milhões de dólares, Reino Unido e alguns países da Europa também 
+    fazem parte dessa lista.
+    """
     plt.figure()
     sns.set(style="whitegrid")
     sns.barplot(data=df_plot_1.head(10), x='País', y='Valor (US$) (em milhões)')
@@ -171,18 +180,15 @@ with tab0:
     plt.xticks(rotation=65)
     st.pyplot(plt)
 
-    """
-    De 2007 a 2021, as exportações de vinhos brasileiros tiveram um aumento significativo, embora ainda representem uma 
-    pequena parcela do mercado global. Dentre os países que mais importam o vinho brasileiro no período em questão, 
-    destaque para o Paraguai com mais de 30 milhões de dólares, grande parte se deve a sua proximidade geográfica e às 
-    relações comerciais entre os dois países. Rússia e China importantes parceiros do BRICS também fazem parte desta 
-    lista, porém a Rússia com maior peso sendo a segunda maior importadora com cerca de 25 milhões de dólares, e em 
-    terceiro o Estados Unidos aproximadamente 10 milhões de dólares, Reino Unido e alguns países da Europa também 
-    fazem parte dessa lista.
-    """
-
-
+   
 with tab1:
+    """
+    Em 2009, o país teve um bom aumento no volume de exportações devido às exportações do vinho de mesa e vinhos finos 
+    de baixo valor agregado. O aumento das exportações de vinhos deveu-se às políticas do governo federal por meio do 
+    Programa de Escoamento da Produção (PEP), especialmente quando exportados para a Rússia e ao programa de exportação 
+    “Wines from Brazil.” Conforme vemos no gráfico, a Rússia importou em 2009 cerca de 20 milhões de litros de vinho 
+    brasileiro. De 2014 até 2021 temos um grande crescimento das exportações para o Paraguai.
+    """
     plt.figure()
     sns.lineplot(data=df_plot_7[df_plot_7.tipo == 'Quantidade (L)'], x='ano', y='valor')
     plt.xlabel('Ano')
@@ -191,25 +197,16 @@ with tab1:
     st.pyplot(plt)
 
     """
-    Em 2009, o país teve um bom aumento no volume de exportações devido às exportações do vinho de mesa e vinhos finos 
-    de baixo valor agregado. O aumento das exportações de vinhos deveu-se às políticas do governo federal por meio do 
-    Programa de Escoamento da Produção (PEP), especialmente quando exportados para a Rússia e ao programa de exportação 
-    “Wines from Brazil.” Conforme vemos no gráfico, a Rússia importou em 2009 cerca de 20 milhões de litros de vinho 
-    brasileiro. De 2014 até 2021 temos um grande crescimento das exportações para o Paraguai.
+    Alguns vinhos brasileiros têm recebido prêmios e reconhecimento em competições internacionais, o que contribui para 
+    a reputação do setor. A entrada de investidores estrangeiros na indústria vinícola brasileira tem impulsionado o 
+    desenvolvimento e a promoção dos vinhos brasileiros no exterior.
     """
-
     plt.figure()
     sns.lineplot(data=df_plot_3[df_plot_3.tipo == 'Quantidade'], x='ano', y='valor', hue='País')
     plt.title('Exportação de vinho com o decorrer do tempo')
     plt.xlabel('Ano')
     plt.ylabel('Quantidade (L) (em milhões)')
     st.pyplot(plt)
-
-    """
-    Alguns vinhos brasileiros têm recebido prêmios e reconhecimento em competições internacionais, o que contribui para 
-    a reputação do setor. A entrada de investidores estrangeiros na indústria vinícola brasileira tem impulsionado o 
-    desenvolvimento e a promoção dos vinhos brasileiros no exterior.
-    """
 
     # plt.figure()
     # plt.title('Exportação de vinho com o decorrer do tempo')
@@ -219,6 +216,13 @@ with tab1:
     # st.pyplot(plt)
 
 with tab2:
+    """
+    Países com crescente interesse em vinhos, como China, Rússia e Índia, representam uma oportunidade para as 
+    exportações brasileiras. Mercados tradicionais de vinho como Reino Unido e Alemanha, têm potencial para a 
+    expansão das exportações brasileiras devido ao seu alto consumo e países em que tanto a produção quanto o consumo 
+    são crescentes, como os Estados Unidos, a Austrália e a África do Sul são também mercados chaves para 
+    as exportações, visto que suas produções não são o suficiente para o mercado aquecido de consumo de vinhos.
+    """
     plt.figure()
     sns.barplot(data=df_plot_2, x='País', y='valor', hue='tipo')
     plt.title('Exportação de vinho brasileiro 2007-2021')
@@ -227,14 +231,7 @@ with tab2:
     plt.xticks(rotation=30)
     st.pyplot(plt)
 
-    """
-    Países com crescente interesse em vinhos, como China, Rússia e Índia, representam uma oportunidade para as 
-    exportações brasileiras. Mercados tradicionais de vinho como Reino Unido e Alemanha, têm potencial para a 
-    expansão das exportações brasileiras devido ao seu alto consumo e países em que tanto a produção quanto o consumo 
-    são crescentes, como os Estados Unidos, a Austrália e a África do Sul também são importantes players de mercado para 
-    as exportações, visto que suas produções não são o suficiente para o mercado aquecido de consumo de vinhos.
-    """
-
+    
     # plt.figure()
     # sns.lineplot(data=df_plot_8[df_plot_8.ano >= 2007], x='ano', y='valor', hue='tipo')
     # plt.xlabel('Ano')
@@ -264,6 +261,13 @@ with tab2:
     # st.pyplot(plt)
 
 with tab3:
+     """
+    Países nos quais o consumo é expressivo mas a produção pequena ou inexistente, como os da Europa Setentrional, 
+    pagam um valor agregado maior pelos vinhos brasileiros conforme o gráfico, chegando até U$7/L (valor pago pela 
+    Suíça). Esse grupo e o anterior constituem-se nos mercados mais dinâmicos, responsáveis não só por grande parte do 
+    crescimento do consumo de vinhos finos, mas também por muitas características desse consumo. São países que possuem 
+    grande potencial para exportação.
+    """
     plt.figure()
     sns.barplot(data=df_plot_4, x='País', y='valor_por_litro')
     plt.title('Média do valor por litro do vinho (2007-2021)')
@@ -272,18 +276,16 @@ with tab3:
     st.pyplot(plt)
 
     """
-    Países nos quais o consumo é expressivo mas a produção pequena ou inexistente, como os da Europa Setentrional, 
-    pagam um valor agregado maior pelos vinhos brasileiros conforme o gráfico, chegando até U$7/L o valor pago pela 
-    Suíça. Esse grupo e o anterior constituem-se nos mercados mais dinâmicos, responsáveis não só por grande parte do 
-    crescimento do consumo de vinhos finos, mas também por muitas características desse consumo. São países que possuem 
-    grande potencial para exportação.
+    Considerando a pequena ou inexistente taxa de produção, temos como consequencia a alta taxa de importaçao nos países 
+    mencionados acima. Atualmente o Brasil não tem altas taxas de exportação para esses mercados e por isso temos um grande
+    potencial de investimento.
     """
     plt.figure()
     ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
     ax.set_title("Dados de importaçao por país no decorrer dos anos")
     ax.set_ylabel("Quantidade (L) (em milhões)")
     ax.set_xlabel("Ano")
-    sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+    #sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
     # plt.figure()
