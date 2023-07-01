@@ -22,9 +22,14 @@ df_exp_vinho['valor'] = df_exp_vinho['valor'] / 1_000_000
 df_exp_vinho_total = df_exp_vinho.groupby(['País', 'tipo']).sum().reset_index().drop('ano', axis=1)
 df_exp_vinho_valor_total = df_exp_vinho_total[df_exp_vinho_total.tipo == 'Valor'].sort_values('valor', ascending=False)
 
+# df_plot_1 = df_exp_vinho_valor_total.copy()
+# df_plot_1 = df_plot_1.drop('tipo', axis=1).reset_index(drop=True)
+# df_plot_1.columns = ['País', 'Valor (US$) (em milhões)']
+
 df_plot_1 = df_exp_vinho_valor_total.copy()
 df_plot_1 = df_plot_1.drop('tipo', axis=1).reset_index(drop=True)
 df_plot_1.columns = ['País', 'Valor (US$) (em milhões)']
+df_plot_1.style.background_gradient(cmap="RdYlGn", subset=['Valor (US$) (em milhões)'])
 
 paises_principais = df_exp_vinho_valor_total.head(5)['País'].to_list()
 df_exp_vinho_total = df_exp_vinho_total[df_exp_vinho_total['País'].isin(paises_principais)]
