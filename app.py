@@ -286,13 +286,14 @@ with tab3:
     crescimento do consumo de vinhos finos, mas também por muitas características desse consumo. São países que possuem 
     grande potencial para exportação.
     """
-    ax = plp.subplots(figsize=(10, 6))
+    ax = plt.subplots(figsize=(10, 6))
     ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
     ax.set_title("Dados de importaçao por país no decorrer dos anos")
     ax.set_ylabel("Quantidade (L) (em milhões)")
     ax.set_xlabel("Ano")
     sns.set(style="whitegrid")
     sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+    st.pyplot(plt)
 
     # plt.figure()
     # sns.lineplot(data=df_plot_10, x='ano', y='Valor', hue='Tipo')
