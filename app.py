@@ -133,9 +133,9 @@ tab0, tab1, tab2, tab3, tab4 = st.tabs(["Geral", "Exportação", "Países Priori
 dados_producao = pd.read_excel('Production.xlsx')
 dados_producao_filtrados = dados_producao.dropna()
 dados_producao_top_continentes = dados_producao_filtrados[(dados_producao_filtrados["Region/Country"]=="Italy") | (dados_producao_filtrados["Region/Country"]=="France") | (dados_producao_filtrados["Region/Country"]=="Spain") | (dados_producao_filtrados["Region/Country"]=="Germany") | (dados_producao_filtrados["Region/Country"]=="Portugal")]
-dados_importacao_top_paises['Region/Country'] = dados_importacao_top_paises['Region/Country'].replace(['Italy', 'France', 'Spain', 'Germany', 'Portugal'], ['Italia', 'França', 'Espanha', 'Alemanha', 'Portugal'])
+dados_producao_top_continentes['Region/Country'] = dados_producao_top_continentes['Region/Country'].replace(['Italy', 'France', 'Spain', 'Germany', 'Portugal'], ['Italia', 'França', 'Espanha', 'Alemanha', 'Portugal'])
 dados_producao_top_continentes.astype({"Year": int, "Quantity": int})
-dados_importacao_top_paises.rename(columns = {'Region/Country':'Paises'}, inplace = True)
+dados_producao_top_continentes.rename(columns = {'Region/Country':'Paises'}, inplace = True)
 dados_producao_top_continentes = dados_producao_top_continentes.sort_values(by="Quantity", ascending=False)
 dados_producao_top_continentes['Quantity'] = dados_producao_top_continentes['Quantity'] / 10
 
