@@ -141,7 +141,7 @@ df_plot_12 = dados_producao_top_continentes.copy()
 
 #Analise de dados importaçao (paises onde temos oportunidades)
 
-dados_importacao = pd.read_excel('/content/Imports.xlsx')
+dados_importacao = pd.read_excel('Imports.xlsx')
 pd.options.display.float_format = '{:.2f}'.format
 dados_importacao_filtrados = dados_importacao.dropna()
 
