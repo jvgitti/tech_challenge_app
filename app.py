@@ -287,7 +287,7 @@ with tab3:
     ax.set_title("Dados de importaçao por país no decorrer dos anos")
     ax.set_ylabel("Quantidade (L) (em milhões)")
     ax.set_xlabel("Ano")
-    #sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+    sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
     # plt.figure()
@@ -316,7 +316,7 @@ with tab4:
     plt.title('Produção de vinho em top países europeus')
     plt.ylabel('Quantidade (L) (em milhões)')
     plt.xlabel('Ano')
-    #sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+    sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
     """
