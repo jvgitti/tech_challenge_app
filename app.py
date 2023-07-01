@@ -151,14 +151,6 @@ dados_importacao_top_paises.astype({"Year": int, "Quantity": int})
 dados_importacao_top_paises.rename(columns = {'Region/Country':'Paises'}, inplace = True)
 dados_importacao_top_paises['Quantity'] = dados_importacao_top_paises['Quantity'] / 10
 
-ax = plp.subplots(figsize=(10, 6))
-ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
-ax.set_title("Dados de importaçao por país no decorrer dos anos")
-ax.set_ylabel("Quantidade (L) (em milhões)")
-ax.set_xlabel("Ano")
-sns.set(style="whitegrid")
-sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
-
 with tab0:
     """
     ## Exportação de Vinho Brasileiro (2007-2021)
@@ -286,12 +278,11 @@ with tab3:
     crescimento do consumo de vinhos finos, mas também por muitas características desse consumo. São países que possuem 
     grande potencial para exportação.
     """
-    ax = plt.subplots(figsize=(10, 6))
-    ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
-    ax.set_title("Dados de importaçao por país no decorrer dos anos")
-    ax.set_ylabel("Quantidade (L) (em milhões)")
-    ax.set_xlabel("Ano")
-    sns.set(style="whitegrid")
+    plt.figure()
+    sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
+    plp.title("Dados de importaçao por país no decorrer dos anos")
+    plp.ylabel("Quantidade (L) (em milhões)")
+    plp.xlabel("Ano")
     sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
