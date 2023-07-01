@@ -261,7 +261,7 @@ with tab2:
     # st.pyplot(plt)
 
 with tab3:
-     """
+    """
     Países nos quais o consumo é expressivo mas a produção pequena ou inexistente, como os da Europa Setentrional, 
     pagam um valor agregado maior pelos vinhos brasileiros conforme o gráfico, chegando até U$7/L (valor pago pela 
     Suíça). Esse grupo e o anterior constituem-se nos mercados mais dinâmicos, responsáveis não só por grande parte do 
