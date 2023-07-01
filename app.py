@@ -279,10 +279,10 @@ with tab3:
     grande potencial para exportação.
     """
     plt.figure()
-    sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
-    plp.set_title("Dados de importaçao por país no decorrer dos anos")
-    plp.set_ylabel("Quantidade (L) (em milhões)")
-    plp.set_xlabel("Ano")
+    ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
+    ax.set_title("Dados de importaçao por país no decorrer dos anos")
+    ax.set_ylabel("Quantidade (L) (em milhões)")
+    ax.set_xlabel("Ano")
     sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
