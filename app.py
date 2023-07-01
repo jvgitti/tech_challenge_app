@@ -139,6 +139,26 @@ dados_producao_top_continentes['Quantity'] = dados_producao_top_continentes['Qua
 
 df_plot_12 = dados_producao_top_continentes.copy()
 
+#Analise de dados importaçao (paises onde temos oportunidades)
+
+dados_importacao = pd.read_excel('/content/Imports.xlsx')
+pd.options.display.float_format = '{:.2f}'.format
+dados_importacao_filtrados = dados_importacao.dropna()
+
+dados_importacao_top_paises = dados_importacao_filtrados[(dados_importacao_filtrados["Region/Country"]=="Switzerland") | (dados_importacao_filtrados["Region/Country"]=="Denmark") | (dados_importacao_filtrados["Region/Country"]=="Czech Republic") | (dados_importacao_filtrados["Region/Country"]=="Sweden")]
+dados_importacao_top_paises['Region/Country'] = dados_importacao_top_paises['Region/Country'].replace(['Switzerland', 'Czech Republic', 'Sweden', 'Denmark'], ['Suiça', 'República Tcheca', 'Suecia', 'Dinamarca'])
+dados_importacao_top_paises.astype({"Year": int, "Quantity": int})
+dados_importacao_top_paises.rename(columns = {'Region/Country':'Paises'}, inplace = True)
+dados_importacao_top_paises['Quantity'] = dados_importacao_top_paises['Quantity'] / 10
+
+ax = plp.subplots(figsize=(10, 6))
+ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
+ax.set_title("Dados de importaçao por país no decorrer dos anos")
+ax.set_ylabel("Quantidade (L) (em milhões)")
+ax.set_xlabel("Ano")
+sns.set(style="whitegrid")
+sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+
 with tab0:
     """
     ## Exportação de Vinho Brasileiro (2007-2021)
@@ -266,6 +286,13 @@ with tab3:
     crescimento do consumo de vinhos finos, mas também por muitas características desse consumo. São países que possuem 
     grande potencial para exportação.
     """
+    ax = plp.subplots(figsize=(10, 6))
+    ax = sns.lineplot(data=dados_importacao_top_paises, x="Year", y="Quantity", hue="Paises")
+    ax.set_title("Dados de importaçao por país no decorrer dos anos")
+    ax.set_ylabel("Quantidade (L) (em milhões)")
+    ax.set_xlabel("Ano")
+    sns.set(style="whitegrid")
+    sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
 
     # plt.figure()
     # sns.lineplot(data=df_plot_10, x='ano', y='Valor', hue='Tipo')
