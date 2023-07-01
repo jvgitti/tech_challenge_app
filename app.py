@@ -148,7 +148,6 @@ with tab0:
     promissor para exportações.
     """
     st.subheader('Exportação de vinho brasileiro 2007-2021')
-    st.write(df.style.background_gradient(cmap=cmap,vmin=(-0.015),vmax=0.015,axis=None).to_html(), unsafe_allow_html=True)
     st.dataframe(df_plot_1, use_container_width=True)
 
     plt.figure()
