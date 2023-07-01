@@ -316,7 +316,7 @@ with tab4:
     plt.title('Produção de vinho em top países europeus')
     plt.ylabel('Quantidade (L) (em milhões)')
     plt.xlabel('Ano')
-    sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+    #sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
     """
