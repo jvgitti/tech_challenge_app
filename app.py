@@ -149,7 +149,7 @@ with tab0:
     """
     st.subheader('Exportação de vinho brasileiro 2007-2021')
     # st.dataframe(df_plot_1, use_container_width=True)
-    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'), columns_auto_size_mode=1)
+    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'))
 
     plt.figure()
     sns.set(style="whitegrid")
