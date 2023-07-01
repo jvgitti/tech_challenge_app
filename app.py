@@ -162,8 +162,9 @@ with tab0:
     promissor para exportações.
     """
     st.subheader('Exportação de vinho brasileiro 2007-2021')
+    st.column_config.Column(df_plot_1, width="medium")
     # st.dataframe(df_plot_1, use_container_width=True)
-    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'), width="medium")
+    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'))
 
     """
     De 2007 a 2021, as exportações de vinhos brasileiros tiveram um aumento significativo, embora ainda representem uma 
