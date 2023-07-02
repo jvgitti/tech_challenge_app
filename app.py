@@ -126,7 +126,7 @@ df_plot_10 = df_exp_vinho_total_ano_quantidade.copy()
 df_plot_11 = df_exp_vinho_total_ano_valor.copy()
 
 st.title('Análise Exploratória da Exportação do Vinho Brasileiro')
-tab0, tab1, tab2, tab3, tab4 = st.tabs(["Geral", "Exportação", "Países Prioritários", "Países Potenciais", "Conclusão"])
+tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs(["Geral", "Exportação", "Países Prioritários", "Países Potenciais", "Conclusão", "Referências"])
 
 # Dados produçao de vinho Europa
 
@@ -162,8 +162,7 @@ with tab0:
     promissor para exportações.
     """
     st.subheader('Exportação de vinho brasileiro 2007-2021')
-    # st.dataframe(df_plot_1, use_container_width=True)
-    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'))
+    st.dataframe(df_plot_1.style.background_gradient(cmap='RdYlGn'), use_container_width=True)
 
     """
     De 2007 a 2021, as exportações de vinhos brasileiros tiveram um aumento significativo, embora ainda representem uma 
@@ -333,4 +332,33 @@ with tab4:
     produtor de vinhos de qualidade e a capacidade do setor em conquistar espaço em âmbito internacional. Com o contínuo 
     investimento em tecnologia, inovação e promoção, é possível que as exportações de vinhos brasileiros continuem a 
     crescer nos próximos anos.
+    """
+
+with tab5:
+    """
+    - Base de dados da vinícula:
+    
+        - http://vitibrasil.cnpuv.embrapa.br/
+    
+    - Base de dados de produção/importação mundiais:
+    
+        - https://vaocubo.com/
+        
+    - Demais informacões:
+    
+        - https://releia.ifsertao-pe.edu.br/jspui/bitstream/123456789/821/1/TCC%20-%20PANORAMA%20DA%20EXPORTA%C3%87%C3%83O%20E%20IMPORTA%C3%87%C3%83O%20DE%20VINHOS%20NO%20BRASIL.pdf
+        
+        - https://santandernegocioseempresas.com.br/conhecimento/internacionalizacao/vinho-brasileiro/
+
+        - https://uxcomex.com.br/2020/09/o-vinho-no-comercio-exterior/
+        
+        - https://vaocubo.com/2022/11/12/wineproduction2021/#:~:text=O%20consumo%20mundial%20de%20vinho,mhl%20por%20ano%20desde%20ent%C3%A3o
+        
+        - https://web.bndes.gov.br/bib/jspui/bitstream/1408/2603/1/BS%2019%20Desafios%20da%20vitinicultura%20brasileira_P.pdf
+
+        - https://dspace.unipampa.edu.br/bitstream/riu/1074/1/Silva%2C%20Samantha%20Pires%20da.%20O%20mercado%20vitivin%C3%ADcola%20brasileiro%20uma%20an%C3%A1lise%20a%20partir%20do%20com%C3%A9rcio%20exterior.pdf
+    
+        
+    
+    
     """
